@@ -69,7 +69,7 @@ load_ecm() {
     local get_front_end_mode
     get_front_end_mode="$(get_front_end_mode)"
     modinfo ecm | awk '/depends/{gsub(",","\n",$NF);print $NF}' | xargs -r -n 1 modprobe
-    modprobe ecm front_end_selection="$get_front_end_mode"
+    modprobe ecm front_end_selection="${get_front_end_mode:-1}"
     echo 1 > /sys/kernel/debug/ecm/ecm_classifier_default/accel_delay_pkts
   }
 
