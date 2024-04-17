@@ -1,13 +1,15 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=qca-ssdk-shell
-PKG_RELEASE:=$(AUTORELEASE)
+PKG_RELEASE:=1
 
 PKG_SOURCE_URL:=https://git.codelinaro.org/clo/qsdk/oss/ssdk-shell.git
 PKG_SOURCE_PROTO:=git
-PKG_SOURCE_DATE:=2022-06-09
-PKG_SOURCE_VERSION:=0e1460b64a61355bebace6773070272610b12199
-PKG_MIRROR_HASH:=b08dfd1a2e70660a900080a781c1ad074d3121255d97808569d22cbc3934dc16
+PKG_SOURCE_DATE:= 2023-10-23
+PKG_SOURCE_VERSION:=001660c
+PKG_MIRROR_HASH:=85a4288ea742a9f9764756a57588a8d0735d61cbe015dff140722dbc3ef6c0e5
+QSDK_VERSION:=12.4.r4
+PKG_VERSION:=$(QSDK_VERSION)-$(PKG_SOURCE_DATE)-$(PKG_SOURCE_VERSION)
 
 include $(INCLUDE_DIR)/kernel.mk
 include $(INCLUDE_DIR)/package.mk
@@ -16,6 +18,7 @@ define Package/qca-ssdk-shell
   SECTION:=QCA
   CATEGORY:=Utilities
   TITLE:=Shell application for QCA SSDK
+  DEPENDS:=+kmod-qca-ssdk
 endef
 
 
